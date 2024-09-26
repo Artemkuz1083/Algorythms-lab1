@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorythms", "Algorythms\Algorythms.csproj", "{79537C89-01F0-49FA-A19B-C3227162FB11}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E0271C3-8FE7-45F1-B140-BB1BED7EC712} = {0E0271C3-8FE7-45F1-B140-BB1BED7EC712}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorytmsLibrary", "AlgorytmsLibrary\AlgorytmsLibrary.csproj", "{0E0271C3-8FE7-45F1-B140-BB1BED7EC712}"
 EndProject
