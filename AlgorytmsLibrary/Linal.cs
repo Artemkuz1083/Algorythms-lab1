@@ -7,7 +7,7 @@ using static AlgorytmsLibrary.Tools;
 
 namespace AlgorytmsLibrary
 {
-    class Linal : IResercheable
+    public class Linal : IResercheable
     {// присваивает массиву значение 1
         public int Returning(int[] array)
         {

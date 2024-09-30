@@ -96,8 +96,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NoPowWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PowWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoPowWindow.xaml.cs">
+      <DependentUpon>NoPowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PowWindow.xaml.cs">
+      <DependentUpon>PowWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -123,6 +137,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AlgorytmsLibrary\AlgorytmsLibrary.csproj">
+      <Project>{0e0271c3-8fe7-45f1-b140-bb1bed7ec712}</Project>
+      <Name>AlgorytmsLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PowAlgorythms\PowAlgorythms.csproj">
+      <Project>{aa403f6b-4940-4ed4-b43e-bba6085d7c8e}</Project>
+      <Name>PowAlgorythms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />

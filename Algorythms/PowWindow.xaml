@@ -1,0 +1,31 @@
+﻿<Window x:Class="Algorythms.PowWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Algorythms"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="PowWindow" Height="450" Width="800">
+    <Grid Cursor="">
+
+        <StackPanel Margin="567,0,0,0" Background="#FFD9F3F7">
+            <Button Margin="50,60" Content="Go" Width="50" Height="50" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}" Cursor="Hand" Background="#FF7F5AD4"/>
+            <ComboBox x:Name="SelectAlgorythm" DisplayMemberPath="" Background="Black" BorderBrush="#7FE481F1">
+                <ComboBoxItem Content ="Pow"/>
+                <ComboBoxItem Content ="RecPow"/>
+                <ComboBoxItem Content ="QuickPow #1"/>
+                <ComboBoxItem Content ="QuickPow #2"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Margin="0,0,233,0" Background="White">
+            <Grid Height="433" Width="563">
+                <Grid x:Name ="RenderChart" Margin="20,20,20,20"/>
+                <oxy:PlotView x:Name="Plot" />
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+
+</Window>

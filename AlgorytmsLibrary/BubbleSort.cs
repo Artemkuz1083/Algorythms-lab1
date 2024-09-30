@@ -7,7 +7,7 @@ using static AlgorytmsLibrary.Tools;
 
 namespace AlgorytmsLibrary
 {
-    class BubbleSort : IResercheable
+    public class BubbleSort : IResercheable
     {
         public BubbleSort(int size, string name) : base(size, name)
         {

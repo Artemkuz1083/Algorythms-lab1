@@ -74,6 +74,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockSort.cs" />
+    <Compile Include="BogoSort.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="Gorner.cs" />
     <Compile Include="Gorner0.cs" />

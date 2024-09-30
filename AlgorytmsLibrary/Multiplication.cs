@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlgorytmsLibrary
 {
-    internal class Multiplication : IResercheable
+    public class Multiplication : IResercheable
     {
         public Multiplication(int size, string name) : base(size, name)
         {

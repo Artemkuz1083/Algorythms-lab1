@@ -63,7 +63,7 @@ namespace AlgorytmsLibrary
         }
 
         //Запуск массива и экспорт данных(кол-во данных и время затраченного времени) для wpf
-        public static List<(int, long)> Export(IResercheable algorythm)
+        public static List<DataPoint> Export(IResercheable algorythm)
         {
             List<(int, long)> results = new List<(int, long)>();
 
@@ -77,11 +77,11 @@ namespace AlgorytmsLibrary
                 }
             }
 
-            List<(int, long)> res = new List<(int, long)>();
+            var res = new List<DataPoint> { };
             for (int i = 1; i <= algorythm.TestArray.Length; i++)
             {
                 var average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
-                res.Add((i, (long)average));
+                res.Add(new DataPoint(i, (long)average));
             }
 
             return res;
