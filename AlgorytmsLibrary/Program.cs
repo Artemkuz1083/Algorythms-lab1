@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static AlgorytmsLibrary.Tools;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
 
 namespace AlgorytmsLibrary
 {
@@ -31,7 +34,7 @@ namespace AlgorytmsLibrary
         }
     }
 
-    class Tools
+    public class Tools
     {
         // Таймер
         public static long Timer(int[] array, IResercheable algorythm)
