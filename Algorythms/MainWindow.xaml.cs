@@ -35,10 +35,12 @@ namespace Algorythms
 
             // Создание графика
             var plotModel = new PlotModel { Title = "My Graph" };
-            var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "X-Axis" };
-            var linearAxis2 = new LinearAxis { Position = AxisPosition.Left, Title = "Y-Axis" };
+            var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "Count(n)" };
+            var linearAxis2 = new LinearAxis { Position = AxisPosition.Left, Title = "Avg time" };
+
             plotModel.Axes.Add(linearAxis);
             plotModel.Axes.Add(linearAxis2);
+
             var lineSeries = new LineSeries { ItemsSource = values };
             plotModel.Series.Add(lineSeries);
 
