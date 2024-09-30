@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Algorythms"
         mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel Margin="0,330,0,0" Background="#FFF9C7C7"/>
+        <StackPanel Margin="658,0,0,80" Background="#FFFFE5E5">
+            <Button Content="Go" Width="90" Height="47"/>
+        </StackPanel>
+        <StackPanel Margin="0,0,142,80"/>
+
     </Grid>
 </Window>
