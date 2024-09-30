@@ -1,49 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PowAlgorythms
 {
-    public class RecPow : PowTest
+    public class RecPow : IPowAlgorithm
     {
-        private int stepsCount;
-        public override long Run()
-        {
-            for (int i = 0; i < 2000; i++)
-            {
-                stepsCount = 0;
-                RecAlgorithm(i);
-                Steps.Add(new Steps(degree: i, stepNumber: stepsCount));
-            }
+        public List<(int, int)> Steps { get; private set; } = new List<(int, int)>();
 
-            return 0;
+        public void Run()
+        {
+            int number = 2;
+            for (int degree = 1; degree <= 10; degree++)
+            {
+                int stepCount = 0;
+                int result = RecPowRecursive(number, degree, ref stepCount);
+                Steps.Add((degree, stepCount));
+            }
         }
 
-        public override string GetName()
+        private int RecPowRecursive(int baseNum, int exp, ref int stepCount)
+        {
+            stepCount++;
+            if (exp == 0)
+                return 1;
+            return baseNum * RecPowRecursive(baseNum, exp - 1, ref stepCount);
+        }
+
+        public string GetName()
         {
             return "RecPow";
-        }
-
-        private long RecAlgorithm(int degree)
-        {
-            if (degree == 0)
-            {
-                stepsCount++;
-                return 1;
-            }
-
-            long res = RecAlgorithm(degree / 2);
-            if (degree % 2 == 1)
-            {
-                stepsCount++;
-                return res * res * 2;
-            }
-
-            stepsCount++;
-
-            return res * res;
         }
     }
 }

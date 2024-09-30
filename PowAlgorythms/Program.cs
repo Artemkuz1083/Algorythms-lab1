@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PowAlgorythms
 {
-    public class Program
+    internal class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            List<PowTest> results = new List<PowTest>()
+            List<IPowAlgorithm> algorithmList = new List<IPowAlgorithm>()
             {
-                new Pow
-                {
-                },
-                new QuickPow
-                {
-
-                },
-                new QuickPow1
-                {
-
-                },
-                new RecPow
-                {
-                }
+                new Pow(),
+                new QuickPow(),
+                new QuickPow1(),
+                new RecPow()
             };
-            foreach (var pow in results)
+
+            foreach (IPowAlgorithm algorithm in algorithmList)
             {
-                Console.WriteLine($"Pow Result:{pow.Run()}");
+                List<(int, int)> steps = Tools.Export(algorithm);
+                Console.WriteLine($"Algorithm: {algorithm.GetName()}");
+                foreach (var step in steps)
+                {
+                    Console.WriteLine($"Degree: {step.Item1}, Steps: {step.Item2}");
+                }
             }
+        }
+    }
+
+    //экспорт шагов
+    class Tools
+    {
+        public static List<(int, int)> Export(IPowAlgorithm algorithm)
+        {
+            algorithm.Run();
+            return algorithm.Steps;
         }
     }
 }

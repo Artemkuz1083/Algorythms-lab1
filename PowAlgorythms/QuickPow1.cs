@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PowAlgorythms
 {
-    public class QuickPow1 : PowTest
+    public class QuickPow1 : IPowAlgorithm
     {
-        public override long Run()
+        public List<(int, int)> Steps { get; private set; } = new List<(int, int)>();
+
+        public void Run()
         {
-            long res = 1;
             for (int i = 0; i < 2000; i++)
             {
                 int count = 0;
-                int number = Number;
-                res = 1;
+                int number = 2;
+                long res = 1;
                 int degree = i;
 
                 while (degree != 0)
@@ -31,18 +28,13 @@ namespace PowAlgorythms
                         res *= number;
                         degree--;
                         count += 2;
-
                     }
                 }
-                Steps.Add(new Steps(degree: i, stepNumber: count));
-
+                Steps.Add((i, count));
             }
-
-
-            return res;
         }
 
-        public override string GetName()
+        public string GetName()
         {
             return "QuickPow1";
         }

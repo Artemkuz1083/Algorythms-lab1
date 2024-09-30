@@ -37,7 +37,6 @@ namespace AlgorytmsLibrary
         public static long Timer(int[] array, IResercheable algorythm)
         {
             Stopwatch stopwatch = new Stopwatch();
-
             stopwatch.Start();
             algorythm.Run(array);
             stopwatch.Stop();

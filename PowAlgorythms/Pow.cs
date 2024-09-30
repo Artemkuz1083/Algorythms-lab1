@@ -1,34 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace PowAlgorythms
 {
-    public class Pow : PowTest
+    public class Pow : IPowAlgorithm
     {
-        public override long Run()
+        public List<(int, int)> Steps { get; private set; } = new List<(int, int)>();
+
+        public void Run()
         {
-            long res = 1;
-            for (int i = 0; i < 2000; i++)
+            int number = 2;
+            for (int degree = 1; degree <= 10; degree++)
             {
-                int count = 0;
-                res = 1;
-                int degree = i;
-                for (int j = 0; j < degree; j++)
+                int result = 1;
+                int stepCount = 0;
+                for (int i = 0; i < degree; i++)
                 {
-                    res *= Number;
-                    count++;
-
+                    result *= number;
+                    stepCount++;
                 }
-                Steps.Add(new Steps(degree: degree, stepNumber: count));
+                Steps.Add((degree, stepCount));
             }
-
-            return res;
         }
 
-        public override string GetName()
+        public string GetName()
         {
             return "Pow";
         }
