@@ -11,7 +11,7 @@
 
         <StackPanel Margin="567,0,0,0" Background="#FFD9F3F7">
             <Button Margin="50,60" Content="Go" Width="50" Height="50" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}" Cursor="Hand" Background="#FF7F5AD4" Click="Button_Click"/>
-            <ComboBox x:Name="SelectAlgorythm" DisplayMemberPath="" Background="Black" BorderBrush="#7FE481F1">
+            <ComboBox x:Name="SelectAlgorythm" DisplayMemberPath="Выберите алгоритм" Background="LightGray" BorderBrush="LightGray" Width="221">
                 <ComboBoxItem Content ="Pow"/>
                 <ComboBoxItem Content ="RecPow"/>
                 <ComboBoxItem Content ="QuickPow #1"/>

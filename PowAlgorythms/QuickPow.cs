@@ -8,8 +8,8 @@ namespace PowAlgorythms
 
         public void Run()
         {
-            int number = 2;
-            for (int degree = 1; degree <= 20000; degree++)
+            int number = 15;
+            for (int degree = 1; degree <= 2000; degree++)
             {
                 int result = 1;
                 int stepCount = 0;

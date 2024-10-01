@@ -75,7 +75,7 @@ namespace AlgorytmsLibrary
             // TestArray = GenerateArray(size);
             for (int j = 1; j <= algorythm.TestArray.Length; j++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 30; i++)
                 {
                     results.Add((
                     j,
@@ -104,7 +104,6 @@ namespace AlgorytmsLibrary
         {
             TestArray = GenerateArray(size);
             Name = name;
-            size = TestArray.Length;
         }
                 
         public abstract void Run(int[] array, int value = 0);
@@ -112,6 +111,8 @@ namespace AlgorytmsLibrary
         public int[] TestArray { get; }
         
         public string Name { get; }
+
+        public int Size { get; }
     }  
 }
     

@@ -36,7 +36,7 @@ namespace Algorythms
                 case 5: return new QuickSort(5000, "QuickSort");
                 case 6: return new TimSort(20000, "TimSort");
                 case 7: return new BubbleSort(2000, "BubbleSort");
-                //case 8: return new Matix;
+                case 8: return new Matr(1000, "Matrix");
                 case 9: return new BlockSort(2000, "BlockSort");
                 case 10: return new StrandSort(2000, "StrandSort");
                 case 11: return new BogoSort(10, "BogoSort");
@@ -54,13 +54,25 @@ namespace Algorythms
 
             // Создание графика
             var plotModel = new PlotModel { Title = algorithm.Name };
-            var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "Count(n)" };
-            var linearAxis2 = new LinearAxis { Position = AxisPosition.Left, Title = "Avg time" };
+            var linearAxis = new LinearAxis
+            {
+                Position = AxisPosition.Bottom,
+                Title = "Count(n)",
+                MajorGridlineStyle = LineStyle.Solid,
+                MinorGridlineStyle = LineStyle.Dot
+            };
+            var linearAxis2 = new LinearAxis
+            {
+                Position = AxisPosition.Left,
+                Title = "Avg time",
+                MajorGridlineStyle = LineStyle.Solid,
+                MinorGridlineStyle = LineStyle.Dot
+            };
 
             plotModel.Axes.Add(linearAxis);
             plotModel.Axes.Add(linearAxis2);
 
-            var lineSeries = new LineSeries { ItemsSource = values, MarkerType = MarkerType.Circle, Title = algorithm.Name };
+            var lineSeries = new LineSeries { ItemsSource = values, MarkerType = MarkerType.Circle, Title = algorithm.Name, Color = OxyColors.Red,  MarkerFill = OxyColors.DarkRed };
             plotModel.Series.Add(lineSeries);
 
             // Привязка данных к графику
