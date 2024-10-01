@@ -9,7 +9,7 @@
         Style="{StaticResource MaterialDesignWindow}"
         Title="MainWindow" Height="500" Width="800">
     <Grid Cursor="">
-        <Label Content="Выберите какой график хотите построить" Margin="102,101,102,321" FontSize="30" HorizontalContentAlignment="Center" />
+        <Label Content="Выберите какой график хотите построить" Margin="102,101,102,280" FontSize="30" HorizontalContentAlignment="Center" />
         <Button x:Name="BtnPow" Margin="0,282,476,0" Content="Степени" FontSize="17" Click="BtnPow_Click" HorizontalAlignment="Right" Width="259" Height="32" VerticalAlignment="Top"/>
         <Button x:Name="BtnNoPow" Margin="476,282,0,0" Content="Не Степени)" FontSize="17" Click="BtnNoPow_Click" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="259" />
     </Grid>

@@ -110,7 +110,7 @@ namespace AlgorytmsLibrary
 
         public int[] TestArray { get; }
         
-        public string Name { get; }
+        public string Name { get;}
 
         public int Size { get; }
     }  

@@ -8,7 +8,7 @@ namespace PowAlgorythms
 
         public void Run()
         {
-            int number = 15;
+            int number = 2;
             for (int degree = 1; degree <= 2000; degree++)
             {
                 int result = 1;

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Algorythms"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PowWindow" Height="450" Width="800">
+        Title="PowWindow" Height="480" Width="800">
     <Grid Cursor="">
 
-        <StackPanel Margin="567,0,0,0" Background="#FFD9F3F7">
+        <StackPanel Margin="567,0,0,0" Background="LightGray">
             <Button Margin="50,60" Content="Go" Width="50" Height="50" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}" Cursor="Hand" Background="#FF7F5AD4" Click="Button_Click"/>
-            <ComboBox x:Name="SelectAlgorythm" DisplayMemberPath="Выберите алгоритм" Background="LightGray" BorderBrush="LightGray" Width="221">
+            <ComboBox x:Name="SelectAlgorythm" SelectedIndex="0" Background="White" BorderBrush="LightGray" Width="216" Margin="4,0,5,0">
                 <ComboBoxItem Content ="Pow"/>
                 <ComboBoxItem Content ="RecPow"/>
                 <ComboBoxItem Content ="QuickPow #1"/>

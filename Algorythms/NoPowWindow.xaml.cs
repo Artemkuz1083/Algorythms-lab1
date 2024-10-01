@@ -28,7 +28,7 @@ namespace Algorythms
         {
             switch (SelectAlgorythm.SelectedIndex)
             {
-                case 0: return new Linal(5, "Linal");
+                case 0: return new Linal(500, "Linal");
                 case 1: return new Sum(50000, "Summ");
                 case 2: return new Multiplication(20000, "Multiplication");
                 case 3: return new Gorner0(10000, "Direct");
@@ -53,7 +53,7 @@ namespace Algorythms
             var values = AlgorytmsLibrary.Tools.Export(algorithm);
 
             // Создание графика
-            var plotModel = new PlotModel { Title = algorithm.Name };
+            var plotModel = new PlotModel { Title = algorithm.Name};
             var linearAxis = new LinearAxis
             {
                 Position = AxisPosition.Bottom,
