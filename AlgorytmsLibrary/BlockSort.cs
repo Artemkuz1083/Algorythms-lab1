@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AlgorytmsLibrary.Tools;
 
 namespace AlgorytmsLibrary
 {
@@ -12,55 +13,51 @@ namespace AlgorytmsLibrary
         {
         }
 
-        public override void Run(int[] array, int value)
+        public override void Run(int[] array, int value = 0)
         {
-            List<int> result = BlockSortMethod(array.ToList(), 5);
+            BlockSortAlg(array);
         }
 
-        private List<int> BlockSortMethod(List<int> arr, int blockSize)
+        private static void BlockSortAlg(int[] array)
         {
-            List<List<int>> blocks = new List<List<int>>();
-            // Divide the input array into blocks of size blockSize
-            for (int i = 0; i < arr.Count; i += blockSize)
+            int n = array.Length;
+
+            // Шаг 1: Найти минимальный и максимальный элемент
+            int min = array.Min();
+            int max = array.Max();
+
+            // Шаг 2: Создаем блоки
+            int blockCount = (int)Math.Sqrt(n);  // Число блоков — это корень из длины массива
+            List<int>[] blocks = new List<int>[blockCount];
+
+            for (int i = 0; i < blockCount; i++)
             {
-                List<int> block = new List<int>();
-
-                for (int j = i; j < i + blockSize && j < arr.Count; j++)
-                {
-                    block.Add(arr[j]);
-                }
-
-                // Sort each block and append it to the list of sorted blocks
-                block.Sort();
-                blocks.Add(block);
+                blocks[i] = new List<int>();  // Инициализируем каждый блок
             }
 
-            // Merge the sorted blocks into a single sorted list
-            List<int> result = new List<int>();
-            while (blocks.Any())
+            // Шаг 3: Распределяем элементы массива по блокам
+            foreach (int num in array)
             {
-                // Find the smallest element in the first block of each sorted block
-                int minIdx = 0;
-                for (int i = 1; i < blocks.Count; i++)
-                {
-                    if (blocks[i][0] < blocks[minIdx][0])
-                    {
-                        minIdx = i;
-                    }
-                }
-
-                // Remove the smallest element and append it to the result list
-                result.Add(blocks[minIdx][0]);
-                blocks[minIdx].RemoveAt(0);
-
-                // If the block is now empty, remove it from the list of sorted blocks
-                if (!blocks[minIdx].Any())
-                {
-                    blocks.RemoveAt(minIdx);
-                }
+                // Определяем, в какой блок попадет элемент
+                int blockIndex = (num - min) * (blockCount - 1) / (max - min);
+                blocks[blockIndex].Add(num);
             }
 
-            return result;
+            // Шаг 4: Сортируем каждый блок
+            for (int i = 0; i < blockCount; i++)
+            {
+                blocks[i].Sort();  // Сортировка каждого блока отдельно
+            }
+
+            // Шаг 5: Собираем отсортированные блоки обратно в исходный массив
+            int index = 0;
+            foreach (List<int> block in blocks)
+            {
+                foreach (int num in block)
+                {
+                    array[index++] = num;  // Перезаписываем элементы в исходный массив
+                }
+            }
         }
     }
 }
