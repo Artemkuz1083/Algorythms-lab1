@@ -28,14 +28,19 @@ namespace Algorythms
         {
             switch (SelectAlgorythm.SelectedIndex)
             {
-                case 0: return new Linal(2000, "BubbleSort");
+                case 0: return new Linal(5, "Linal");
                 case 1: return new Sum(50000, "Summ");
                 case 2: return new Multiplication(20000, "Multiplication");
-                case 3: return new Gorner0(10000, "Gorner0");
+                case 3: return new Gorner0(10000, "Direct");
                 case 4: return new Gorner(10000, "Gorner");
                 case 5: return new QuickSort(5000, "QuickSort");
                 case 6: return new TimSort(20000, "TimSort");
                 case 7: return new BubbleSort(2000, "BubbleSort");
+                //case 8: return new Matix;
+                case 9: return new BlockSort(2000, "BlockSort");
+                case 10: return new StrandSort(2000, "StrandSort");
+                case 11: return new BogoSort(10, "BogoSort");
+                case 12: return new HeapSort(2000, "HeapSort");
             }
             return null;
         }
@@ -48,14 +53,14 @@ namespace Algorythms
             var values = AlgorytmsLibrary.Tools.Export(algorithm);
 
             // Создание графика
-            var plotModel = new PlotModel { Title = "My Graph" };
+            var plotModel = new PlotModel { Title = algorithm.Name };
             var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "Count(n)" };
             var linearAxis2 = new LinearAxis { Position = AxisPosition.Left, Title = "Avg time" };
 
             plotModel.Axes.Add(linearAxis);
             plotModel.Axes.Add(linearAxis2);
 
-            var lineSeries = new LineSeries { ItemsSource = values };
+            var lineSeries = new LineSeries { ItemsSource = values, MarkerType = MarkerType.Circle, Title = algorithm.Name };
             plotModel.Series.Add(lineSeries);
 
             // Привязка данных к графику

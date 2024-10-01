@@ -21,6 +21,11 @@ namespace AlgorytmsLibrary
         private static void BlockSortAlg(int[] array)
         {
             int n = array.Length;
+            
+            if (n == 1)
+            {
+                return;
+            }
 
             // Шаг 1: Найти минимальный и максимальный элемент
             int min = array.Min();

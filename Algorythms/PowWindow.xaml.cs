@@ -44,7 +44,7 @@ namespace Algorythms
 
             // Создание графика
             var plotModel = new PlotModel { Title = "Pow" };
-            var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "Numbers" };
+            var linearAxis = new LinearAxis { Position = AxisPosition.Bottom, Title = "Degree" };
             var linearAxis2 = new LinearAxis { Position = AxisPosition.Left, Title = "Steps" };
 
             plotModel.Axes.Add(linearAxis);
