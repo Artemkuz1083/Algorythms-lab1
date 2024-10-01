@@ -40,6 +40,7 @@ namespace AlgorytmsLibrary
 
     public class Tools
     {
+
         // Таймер
         public static long Timer(int[] array, IResercheable algorythm)
         {
