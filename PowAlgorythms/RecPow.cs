@@ -9,7 +9,7 @@ namespace PowAlgorythms
         public void Run()
         {
             int number = 2;
-            for (int degree = 1; degree <= 10; degree++)
+            for (int degree = 1; degree <= 100; degree++)
             {
                 int stepCount = 0;
                 int result = RecPowRecursive(number, degree, ref stepCount);

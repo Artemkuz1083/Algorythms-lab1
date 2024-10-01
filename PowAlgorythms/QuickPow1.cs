@@ -8,7 +8,7 @@ namespace PowAlgorythms
 
         public void Run()
         {
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 20000; i++)
             {
                 int count = 0;
                 int number = 2;

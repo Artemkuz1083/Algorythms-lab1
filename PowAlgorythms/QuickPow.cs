@@ -9,7 +9,7 @@ namespace PowAlgorythms
         public void Run()
         {
             int number = 2;
-            for (int degree = 1; degree <= 10; degree++)
+            for (int degree = 1; degree <= 20000; degree++)
             {
                 int result = 1;
                 int stepCount = 0;

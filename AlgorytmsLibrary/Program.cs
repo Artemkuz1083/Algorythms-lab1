@@ -9,22 +9,26 @@ using static AlgorytmsLibrary.Tools;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.IO;
 
 namespace AlgorytmsLibrary
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Test()
         {
             List<IResercheable> algorythmList = new List<IResercheable>()
             {
+                /*
                 new BubbleSort(2000, "BubbleSort"),
+                
                 new TimSort(20000, "TimSort"),
                 new Linal(50000, "Linal"),
                 new Sum(50000, "Summ"),
                 new Gorner(10000, "Gorner"),
                 new Gorner0(10000,"Direct"),
                 new QuickSort(12000, "QuickSort")
+                */
             };
 
             foreach (IResercheable algorythm in algorythmList)
@@ -44,7 +48,7 @@ namespace AlgorytmsLibrary
             algorythm.Run(array);
             stopwatch.Stop();
 
-            return stopwatch.ElapsedMilliseconds;
+            return stopwatch.ElapsedTicks / 100;
         }
 
 
@@ -57,7 +61,7 @@ namespace AlgorytmsLibrary
 
             for (int i = 0; i < size; i++)
             {
-                array[i] = random.Next(0, 1000000);
+                array[i] = random.Next(0, 100000);
             }
             return array;
         }
@@ -68,19 +72,21 @@ namespace AlgorytmsLibrary
             List<(int, long)> results = new List<(int, long)>();
 
             // TestArray = GenerateArray(size);
-            foreach (int dimension in algorythm.TestArray)
+            for (int j = 1; j <= algorythm.TestArray.Length; j++)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    results.Add((dimension,
-                    Timer(GenerateArray(dimension), algorythm)));
+                    results.Add((
+                    j,
+                    Timer(GenerateArray(j), algorythm)));
                 }
             }
+            
 
             var res = new List<DataPoint> { };
             for (int i = 1; i <= algorythm.TestArray.Length; i++)
             {
-                var average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
+                double average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
                 res.Add(new DataPoint(i, (long)average));
             }
 
@@ -97,6 +103,7 @@ namespace AlgorytmsLibrary
         {
             TestArray = GenerateArray(size);
             Name = name;
+            size = TestArray.Length;
         }
                 
         public abstract void Run(int[] array, int value = 0);

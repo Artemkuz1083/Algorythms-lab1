@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +21,26 @@ namespace Algorythms
         public PowWindow()
         {
             InitializeComponent();
+        }
 
+        private IPowAlgorithm GetSelectedAlgorithm()
+        {
+            switch (SelectAlgorythm.SelectedIndex)
+            {
+                case 0: return new Pow();
+                case 1: return new RecPow();
+                case 2: return new QuickPow();
+                case 3: return new QuickPow1();
+            }
+            return null;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             IPowAlgorithm algorithm = GetSelectedAlgorithm();
 
             // Создание данных для графика
-            var values = new List<DataPoint> { new DataPoint(0, 1), new DataPoint(1, 2), new DataPoint(2, 3), new DataPoint(3, 4), new DataPoint(4, 5) };
+            var values = PowAlgorythms.Tools.Export(algorithm);
 
             // Создание графика
             var plotModel = new PlotModel { Title = "Pow" };
@@ -39,18 +55,6 @@ namespace Algorythms
 
             // Привязка данных к графику
             Plot.Model = plotModel;
-        }
-
-        private IPowAlgorithm GetSelectedAlgorithm()
-        {
-            switch (SelectAlgorythm.SelectedIndex)
-            {
-                case 0: return new Pow();
-                case 1: return new RecPow();
-                case 2: return new QuickPow();
-                case 3: return new QuickPow1();
-            }
-            return null;
         }
     }
 }

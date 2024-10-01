@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
 
 namespace PowAlgorythms
@@ -17,23 +18,24 @@ namespace PowAlgorythms
 
             foreach (IPowAlgorithm algorithm in algorithmList)
             {
-                List<(int, int)> steps = Tools.Export(algorithm);
-                Console.WriteLine($"Algorithm: {algorithm.GetName()}");
-                foreach (var step in steps)
-                {
-                    Console.WriteLine($"Degree: {step.Item1}, Steps: {step.Item2}");
-                }
+                List<DataPoint> steps = Tools.Export(algorithm);               
             }
         }
     }
 
     //экспорт шагов
-    class Tools
+    public class Tools
     {
-        public static List<(int, int)> Export(IPowAlgorithm algorithm)
+        public static List<DataPoint> Export(IPowAlgorithm algorithm)
         {
             algorithm.Run();
-            return algorithm.Steps;
+            var steps = algorithm.Steps;
+            var points = new List<DataPoint>();
+            foreach (var step in steps)
+            {
+                points.Add(new DataPoint(step.Item2, step.Item1));
+            }
+            return points;
         }
     }
 }
