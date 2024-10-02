@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Linq;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using PowAlgorythms;
+using MathNet;
+using MathNet.Numerics;
 
 namespace Algorythms
 {
-    public partial class PowWindow : Window
+    public partial class PowWindow : System.Windows.Window
     {
         public PowWindow()
         {
@@ -41,9 +44,36 @@ namespace Algorythms
 
             // Создание данных для графика с введенной степенью
             var values = PowAlgorythms.Tools.Export(algorithm, maxDegree);
+            var plotModel = new PlotModel { Title = "Pow" };
+                    var count = values.Count;
+
+                    var lineSeries = new LineSeries
+                    {
+                        ItemsSource = values,
+                        MarkerType = MarkerType.Circle,
+                        Title = "Pow",
+                        Color = OxyColors.Red,
+                        MarkerFill = OxyColors.DarkRed
+                    };
+
+
+                    // Данные для апроксимации
+                    double[] xData = values.Select((t, i) => (double)(0 + i)).ToArray();
+                    double[] yData = (double[])values.Select(t => t.Y).ToArray();
+
+                    // Вычисляем коэффициенты полинома 3-й степени
+                    double[] polynomialCoefficients = GetPolynomialApproximation(xData, yData, 3);
+
+                    // Создаем FunctionSeries для апроксимации
+                    FunctionSeries approximationSeries = new FunctionSeries(
+                        x => polynomialCoefficients[0] + polynomialCoefficients[1] * x +
+                             polynomialCoefficients[2] * x * x + polynomialCoefficients[3] * x * x * x,
+                        xData.Min(), xData.Max(), 0.1,
+                        $"Pow (Апроксимация)"
+                    );
+            approximationSeries.Color = OxyColors.Black;
 
             // Создание графика
-            var plotModel = new PlotModel { Title = "Pow" };
             var linearAxis = new LinearAxis
             {
                 Position = AxisPosition.Bottom,
@@ -61,12 +91,16 @@ namespace Algorythms
 
             plotModel.Axes.Add(linearAxis);
             plotModel.Axes.Add(linearAxis2);
-
-            var lineSeries = new LineSeries { ItemsSource = values, MarkerType = MarkerType.Circle, Color = OxyColors.Red, MarkerFill = OxyColors.DarkRed };
+           
             plotModel.Series.Add(lineSeries);
 
             // Привязка данных к графику
             Plot.Model = plotModel;
+        }
+
+        private double[] GetPolynomialApproximation(double[] xData, double[] yData, int degree)
+        {
+            return Fit.Polynomial(xData, yData, degree);
         }
     }
 }

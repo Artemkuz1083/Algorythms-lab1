@@ -9,25 +9,22 @@ namespace AlgorytmsLibrary
 {
     public class Gorner : IResercheable
     {
-        public override void Run(int[] array, int value = 0)
-        {
-            GornerAlg(array);
-        }
-        static double GornerAlg(int[] array)
-        {
-            double x = 1.5;
-            double result = 0;
-
-            for (int k = 1; k < array.Length + 1; k++)
-            {
-                result += array[k - 1] * Math.Pow(x, k - 1);
-            }
-
-            return result;
-        }
+        private int[] coefficients;
 
         public Gorner(int size, string name) : base(size, name)
         {
+            coefficients = GenerateArray(size);
+        }
+
+        public override void Run(int[] array, int x = 0)
+        {
+            int n = coefficients.Length;
+            long result = coefficients[0];
+
+            for (int i = 1; i < n; i++)
+            {
+                result = result * x + coefficients[i];
+            }
         }
     }
 }

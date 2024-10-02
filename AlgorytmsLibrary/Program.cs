@@ -15,8 +15,10 @@ namespace AlgorytmsLibrary
 {
     public class Program
     {
+
         public static void Test()
         {
+            
             List<IResercheable> algorythmList = new List<IResercheable>()
             {
                 /*
@@ -31,10 +33,12 @@ namespace AlgorytmsLibrary
                 */
             };
 
+            /*
             foreach (IResercheable algorythm in algorythmList)
             {
                 Export(algorythm);
             }
+            */
         }
     }
 
@@ -93,6 +97,7 @@ namespace AlgorytmsLibrary
         }
 
         //Запуск массива и экспорт данных(кол-во данных и время затраченного времени) для wpf
+        /*
         public static List<DataPoint> Export(IResercheable algorythm)
         {
             List<(int, long)> results = new List<(int, long)>();
@@ -118,6 +123,7 @@ namespace AlgorytmsLibrary
 
             return res;
         }
+        */
     }
 
     public abstract class IResercheable
