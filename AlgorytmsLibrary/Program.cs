@@ -40,6 +40,31 @@ namespace AlgorytmsLibrary
 
     public class Tools
     {
+        public static List<DataPoint> Export(IResercheable algorythm, int minN, int maxN)
+        {
+            List<(int, long)> results = new List<(int, long)>();
+
+            // Генерация массива и экспорт данных
+            for (int j = minN; j <= maxN; j++)
+            {
+                for (int i = 0; i < 30; i++)
+                {
+                    results.Add((
+                    j,
+                    Timer(GenerateArray(j), algorythm)));
+                }
+            }
+
+            var res = new List<DataPoint> { };
+            for (int i = minN; i <= maxN; i++)
+            {
+                double average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
+                res.Add(new DataPoint(i, (long)average));
+            }
+
+            return res;
+        }
+
 
         // Таймер
         public static long Timer(int[] array, IResercheable algorythm)
@@ -82,7 +107,7 @@ namespace AlgorytmsLibrary
                     Timer(GenerateArray(j), algorythm)));
                 }
             }
-            
+
 
             var res = new List<DataPoint> { };
             for (int i = 1; i <= algorythm.TestArray.Length; i++)
@@ -105,14 +130,13 @@ namespace AlgorytmsLibrary
             TestArray = GenerateArray(size);
             Name = name;
         }
-                
+
         public abstract void Run(int[] array, int value = 0);
 
         public int[] TestArray { get; }
-        
-        public string Name { get;}
+
+        public string Name { get; }
 
         public int Size { get; }
-    }  
+    }
 }
-    

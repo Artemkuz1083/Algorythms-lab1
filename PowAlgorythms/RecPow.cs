@@ -6,10 +6,10 @@ namespace PowAlgorythms
     {
         public List<(int, int)> Steps { get; private set; } = new List<(int, int)>();
 
-        public void Run()
+        public void Run(int maxDegree)
         {
             int number = 2;
-            for (int degree = 1; degree <= 100; degree++)
+            for (int degree = 1; degree <= maxDegree; degree++)
             {
                 int stepCount = 0;
                 int result = RecPowRecursive(number, degree, ref stepCount);

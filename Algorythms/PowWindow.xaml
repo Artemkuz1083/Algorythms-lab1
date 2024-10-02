@@ -6,26 +6,33 @@
         xmlns:local="clr-namespace:Algorythms"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PowWindow" Height="480" Width="800">
+        Title="PowWindow" Height="450" Width="800">
     <Grid Cursor="">
-
         <StackPanel Margin="567,0,0,0" Background="LightGray">
-            <Button Margin="50,60" Content="Go" Width="50" Height="50" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}" Cursor="Hand" Background="#FF7F5AD4" Click="Button_Click"/>
-            <ComboBox x:Name="SelectAlgorythm" SelectedIndex="0" Background="White" BorderBrush="LightGray" Width="216" Margin="4,0,5,0">
-                <ComboBoxItem Content ="Pow"/>
-                <ComboBoxItem Content ="RecPow"/>
-                <ComboBoxItem Content ="QuickPow #1"/>
-                <ComboBoxItem Content ="QuickPow #2"/>
+            <TextBlock Text="Введите степень:" Margin="10,10,10,0" />
+            <TextBox x:Name="DegreeInput" Width="200" Height="30" Margin="10,0,10,10" />
+
+            <Button Margin="50,20" Content="Go" Width="50" Height="50"
+                    Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}"
+                    Cursor="Hand" Background="#FF7F5AD4" Click="Button_Click"/>
+            <ComboBox x:Name="SelectAlgorythm"
+                      SelectedIndex="0"
+                      Background="White"
+                      BorderBrush="LightGray"
+                      Width="216" 
+                      Margin="10,10,10,10">
+                <ComboBoxItem Content="Pow"/>
+                <ComboBoxItem Content="RecPow"/>
+                <ComboBoxItem Content="QuickPow #1"/>
+                <ComboBoxItem Content="QuickPow #2"/>
             </ComboBox>
         </StackPanel>
 
         <StackPanel Margin="0,0,233,0" Background="White">
             <Grid Height="433" Width="563">
-                <Grid x:Name ="RenderChart" Margin="20,20,20,20"/>
-                <oxy:PlotView x:Name="Plot" />
+                <Grid x:Name="RenderChart" Margin="20,20,20,20"/>
+                <oxy:PlotView x:Name="Plot"/>
             </Grid>
         </StackPanel>
-
     </Grid>
-
 </Window>

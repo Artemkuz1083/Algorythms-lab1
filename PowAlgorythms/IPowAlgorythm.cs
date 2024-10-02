@@ -6,7 +6,7 @@ namespace PowAlgorythms
     public interface IPowAlgorithm
     {
         List<(int, int)> Steps { get; }  // Список шагов (степень, количество шагов)
-        void Run();                      // Метод для выполнения алгоритма
+        void Run(int maxDegree);                      // Метод для выполнения алгоритма
         string GetName();                // Имя алгоритма
     }
 }

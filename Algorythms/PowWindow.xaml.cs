@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -13,9 +8,6 @@ using PowAlgorythms;
 
 namespace Algorythms
 {
-    /// <summary>
-    /// Логика взаимодействия для PowWindow.xaml
-    /// </summary>
     public partial class PowWindow : Window
     {
         public PowWindow()
@@ -39,8 +31,16 @@ namespace Algorythms
         {
             IPowAlgorithm algorithm = GetSelectedAlgorithm();
 
-            // Создание данных для графика
-            var values = PowAlgorythms.Tools.Export(algorithm);
+            // Получаем введенную степень
+            int maxDegree;
+            if (!int.TryParse(DegreeInput.Text, out maxDegree))
+            {
+                MessageBox.Show("Введите корректное целое число для степени.");
+                return;
+            }
+
+            // Создание данных для графика с введенной степенью
+            var values = PowAlgorythms.Tools.Export(algorithm, maxDegree);
 
             // Создание графика
             var plotModel = new PlotModel { Title = "Pow" };

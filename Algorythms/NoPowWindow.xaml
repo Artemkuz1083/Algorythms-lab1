@@ -6,12 +6,25 @@
         xmlns:local="clr-namespace:Algorythms"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="NoPowWindow" Height="480" Width="800">
+        Title="NoPowWindow" Height="450" Width="800">
     <Grid Cursor="">
-
         <StackPanel Margin="567,0,0,0" Background="LightGray">
+            <!-- MinN Input -->
+            <TextBlock Text="Min N:" Margin="50,10,0,0"/>
+            <TextBox x:Name="MinNInput" Margin="50,10,0,0" Width="100" Text="1" />
+
+            <!-- MaxN Input -->
+            <TextBlock Text="Max N:" Margin="50,10,0,0"/>
+            <TextBox x:Name="MaxNInput" Margin="50,10,0,0" Width="100" Text="10000" />
+
             <Button x:Name="BtnStart" Margin="50,60" Content="Go" Width="50" Height="50" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionButton}" Cursor="Hand" Background="#FF7F5AD4" Click="Button_Click"/>
-            <ComboBox x:Name="SelectAlgorythm" SelectedIndex="0" Background="White" BorderBrush="LightGray" Width="216" Margin="4,0,5,0">
+
+            <ComboBox x:Name="SelectAlgorythm"
+                      SelectedIndex="0"
+                      Background="White"
+                      BorderBrush="LightGray"
+                      Width="216"
+                      Margin="4,0,5,0">
                 <ComboBoxItem Content ="Постоянная функция"/>
                 <ComboBoxItem Content ="Сумма элементов"/>
                 <ComboBoxItem Content ="Произведение элементов"/>
@@ -34,7 +47,5 @@
                 <oxy:PlotView x:Name="Plot" Grid.Row="1" Margin="5" />
             </Grid>
         </StackPanel>
-
     </Grid>
-
 </Window>

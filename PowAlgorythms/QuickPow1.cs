@@ -6,9 +6,9 @@ namespace PowAlgorythms
     {
         public List<(int, int)> Steps { get; private set; } = new List<(int, int)>();
 
-        public void Run()
+        public void Run(int maxDegree)
         {
-            for (int i = 0; i < 20000; i++)
+            for (int i = 0; i < maxDegree; i++)
             {
                 int count = 0;
                 int number = 2;
