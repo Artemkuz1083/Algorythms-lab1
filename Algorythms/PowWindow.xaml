@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Algorythms"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="PowWindow" Height="450" Width="800">
+        Title="PowWindow" Height="480" Width="810">
     <Grid Cursor="">
         <StackPanel Margin="567,0,0,0" Background="LightGray">
             <TextBlock Text="Введите степень:" Margin="10,10,10,0" />
