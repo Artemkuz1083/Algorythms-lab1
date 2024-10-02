@@ -51,11 +51,12 @@ namespace AlgorytmsLibrary
             // Генерация массива и экспорт данных
             for (int j = minN; j <= maxN; j++)
             {
-                for (int i = 0; i < 30; i++)
+                var array = GenerateArray(j);
+                for (int i = 0; i < 5; i++)
                 {
                     results.Add((
                     j,
-                    Timer(GenerateArray(j), algorythm)));
+                    Timer(array, algorythm)));
                 }
             }
 

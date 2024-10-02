@@ -45,33 +45,36 @@ namespace Algorythms
             // Создание данных для графика с введенной степенью
             var values = PowAlgorythms.Tools.Export(algorithm, maxDegree);
             var plotModel = new PlotModel { Title = "Pow" };
-                    var count = values.Count;
+            var count = values.Count;
 
-                    var lineSeries = new LineSeries
-                    {
-                        ItemsSource = values,
-                        MarkerType = MarkerType.Circle,
-                        Title = "Pow",
-                        Color = OxyColors.Red,
-                        MarkerFill = OxyColors.DarkRed
-                    };
+            var lineSeries = new LineSeries
+            {
+                ItemsSource = values,
+                MarkerType = MarkerType.Circle,
+                Title = "Pow",
+                Color = OxyColors.Red,
+                MarkerFill = OxyColors.DarkRed
+            };
 
 
-                    // Данные для апроксимации
-                    double[] xData = values.Select((t, i) => (double)(0 + i)).ToArray();
-                    double[] yData = (double[])values.Select(t => t.Y).ToArray();
+            // Данные для апроксимации
+            double[] xData = values.Select((t, i) => (double)(1 + i)).ToArray();
+            double[] yData = (double[])values.Select(t => t.Y).ToArray();
 
-                    // Вычисляем коэффициенты полинома 3-й степени
-                    double[] polynomialCoefficients = GetPolynomialApproximation(xData, yData, 3);
+            // Вычисляем коэффициенты полинома 3-й степени
+            double[] polynomialCoefficients = GetPolynomialApproximation(xData, yData, 3);
 
-                    // Создаем FunctionSeries для апроксимации
-                    FunctionSeries approximationSeries = new FunctionSeries(
-                        x => polynomialCoefficients[0] + polynomialCoefficients[1] * x +
-                             polynomialCoefficients[2] * x * x + polynomialCoefficients[3] * x * x * x,
-                        xData.Min(), xData.Max(), 0.1,
-                        $"Pow (Апроксимация)"
-                    );
+            // Создаем FunctionSeries для апроксимации
+            FunctionSeries approximationSeries = new FunctionSeries(
+                x => polynomialCoefficients[0] + polynomialCoefficients[1] * x +
+                        polynomialCoefficients[2] * x * x + polynomialCoefficients[3] * x * x * x,
+                xData.Min(), xData.Max(), 0.1,
+                $"Pow (Апроксимация)"
+                );
             approximationSeries.Color = OxyColors.Black;
+
+            plotModel.Series.Add(lineSeries);
+            plotModel.Series.Add(approximationSeries);
 
             // Создание графика
             var linearAxis = new LinearAxis
@@ -92,7 +95,6 @@ namespace Algorythms
             plotModel.Axes.Add(linearAxis);
             plotModel.Axes.Add(linearAxis2);
            
-            plotModel.Series.Add(lineSeries);
 
             // Привязка данных к графику
             Plot.Model = plotModel;
