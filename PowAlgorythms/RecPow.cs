@@ -19,10 +19,25 @@ namespace PowAlgorythms
 
         private int RecPowRecursive(int baseNum, int exp, ref int stepCount)
         {
-            stepCount++;
+            int f;
+
+            stepCount += 1;
+
             if (exp == 0)
-                return 1;
-            return baseNum * RecPowRecursive(baseNum, exp - 1, ref stepCount);
+            {
+                f = 1;
+                return f;
+            }
+            f = RecPowRecursive(baseNum, exp / 2, ref stepCount);
+            if (exp % 2 == 1)
+            {
+                f = f * f * baseNum;
+            }
+            else
+            {
+                f = f * f;
+            }
+            return f;
         }
 
         public string GetName()

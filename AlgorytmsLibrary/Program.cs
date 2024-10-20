@@ -19,26 +19,6 @@ namespace AlgorytmsLibrary
         public static void Test()
         {
             
-            List<IResercheable> algorythmList = new List<IResercheable>()
-            {
-                /*
-                new BubbleSort(2000, "BubbleSort"),
-                
-                new TimSort(20000, "TimSort"),
-                new Linal(50000, "Linal"),
-                new Sum(50000, "Summ"),
-                new Gorner(10000, "Gorner"),
-                new Gorner0(10000,"Direct"),
-                new QuickSort(12000, "QuickSort")
-                */
-            };
-
-            /*
-            foreach (IResercheable algorythm in algorythmList)
-            {
-                Export(algorythm);
-            }
-            */
         }
     }
 
@@ -46,7 +26,7 @@ namespace AlgorytmsLibrary
     {
         public static List<DataPoint> Export(IResercheable algorythm, int minN, int maxN)
         {
-            List<(int, long)> results = new List<(int, long)>();
+            List<(int, double)> results = new List<(int, double)>();
 
             // Генерация массива и экспорт данных
             for (int j = minN; j <= maxN; j++)
@@ -64,7 +44,7 @@ namespace AlgorytmsLibrary
             for (int i = minN; i <= maxN; i++)
             {
                 double average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
-                res.Add(new DataPoint(i, (long)average));
+                res.Add(new DataPoint(i, average));
             }
 
             return res;
@@ -72,14 +52,15 @@ namespace AlgorytmsLibrary
 
 
         // Таймер
-        public static long Timer(int[] array, IResercheable algorythm)
+        public static double Timer(int[] array, IResercheable algorythm)
         {
             Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Reset();
             stopwatch.Start();
             algorythm.Run(array);
             stopwatch.Stop();
 
-            return stopwatch.ElapsedTicks / 100;
+            return stopwatch.ElapsedTicks;
         }
 
 
@@ -96,35 +77,6 @@ namespace AlgorytmsLibrary
             }
             return array;
         }
-
-        //Запуск массива и экспорт данных(кол-во данных и время затраченного времени) для wpf
-        /*
-        public static List<DataPoint> Export(IResercheable algorythm)
-        {
-            List<(int, long)> results = new List<(int, long)>();
-
-            // TestArray = GenerateArray(size);
-            for (int j = 1; j <= algorythm.TestArray.Length; j++)
-            {
-                for (int i = 0; i < 30; i++)
-                {
-                    results.Add((
-                    j,
-                    Timer(GenerateArray(j), algorythm)));
-                }
-            }
-
-
-            var res = new List<DataPoint> { };
-            for (int i = 1; i <= algorythm.TestArray.Length; i++)
-            {
-                double average = results.Where(x => x.Item1 == i).Average(x => x.Item2);
-                res.Add(new DataPoint(i, (long)average));
-            }
-
-            return res;
-        }
-        */
     }
 
     public abstract class IResercheable

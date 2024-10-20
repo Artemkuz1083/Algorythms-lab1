@@ -30,33 +30,33 @@ namespace Algorythms
         {
             switch (SelectAlgorythm.SelectedIndex)
             {
-                case 0: return new Linal(2000, "Linal");
-                case 1: return new Sum(5000, "Summ");
-                case 2: return new Multiplication(20000, "Multiplication");
-                case 3: return new Gorner(10000, "Gorner");
-                case 4: return new Gorner0(10000, "Direct");
-                case 5: return new QuickSort(5000, "QuickSort");
-                case 6: return new TimSort(20000, "TimSort");
-                case 7: return new BubbleSort(2000, "BubbleSort");
-                case 8: return new Matr(1000, "Matrix");
-                case 9: return new BlockSort(2000, "BlockSort");
-                case 10: return new StrandSort(2000, "StrandSort");
-                case 11: return new BogoSort(10, "BogoSort");
-                case 12: return new HeapSort(2000, "HeapSort");
+                case 0: return new Linal(1, "Linal");
+                case 1: return new Sum(1, "Summ");
+                case 2: return new Multiplication(1, "Multiplication");
+                case 3: return new Gorner(3000, "Gorner");
+                case 4: return new Gorner0(1, "Direct");
+                case 5: return new QuickSort(1, "QuickSort");
+                case 6: return new TimSort(1, "TimSort");
+                case 7: return new BubbleSort(1, "BubbleSort");
+                case 8: return new Matr(1, "Matrix");
+                case 9: return new BlockSort(1, "BlockSort");
+                case 10: return new StrandSort(1, "StrandSort");
+                case 11: return new BogoSort(1, "BogoSort");
+                case 12: return new HeapSort(1, "HeapSort");
             }
             return null;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Получаем алгоритм
-            IResercheable algorithm = GetSelectedAlgorithm();
+            // Получаем алгоритм            
 
             // Получаем значения minN и maxN
             if (int.TryParse(MinNInput.Text, out int minN) && int.TryParse(MaxNInput.Text, out int maxN))
             {
                 if (minN > 0 && maxN > minN)
                 {
+                    IResercheable algorithm = GetSelectedAlgorithm();
 
                     // Генерация данных для графика
                     var values = AlgorytmsLibrary.Tools.Export(algorithm, minN, maxN);
@@ -104,7 +104,7 @@ namespace Algorythms
                     var linearAxis2 = new LinearAxis
                     {
                         Position = AxisPosition.Left,
-                        Title = "Avg time(Tick /100)",
+                        Title = "Avg time(Tick)",
                         MajorGridlineStyle = LineStyle.Solid,
                         MinorGridlineStyle = LineStyle.Dot
                     };

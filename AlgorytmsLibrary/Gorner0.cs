@@ -14,9 +14,9 @@ namespace AlgorytmsLibrary
             double x = 1.5;
             double result = 0;
 
-            for (int k = 1; k < array.Length + 1; k++)
+            for (int k = 0; k < array.Length; k++)
             {
-                result += array[k - 1] * Math.Pow(x, k - 1);
+                result += array[k] * Math.Pow(x, k - 1);
             }
 
             return result;

@@ -44,7 +44,7 @@ namespace Algorythms
 
             // Создание данных для графика с введенной степенью
             var values = PowAlgorythms.Tools.Export(algorithm, maxDegree);
-            var plotModel = new PlotModel { Title = "Pow" };
+            var plotModel = new PlotModel { Title = algorithm.GetName() };
             var count = values.Count;
 
             var lineSeries = new LineSeries

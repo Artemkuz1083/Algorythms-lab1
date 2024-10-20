@@ -16,9 +16,11 @@ namespace AlgorytmsLibrary
 
         public override void Run(int[] array, int value)
         {
+            int result = 1;
+
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] *= array[i];
+                result *= array[i];
             }
         }
 
